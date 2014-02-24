@@ -1,4 +1,5 @@
-package csc281.project.helicoptergame;
+package com.csc281.helicoptergame;
+
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,7 +22,7 @@ public class TunnelView extends View {
 
 	private MainActivity tunnel;
 	//Wall wall;
-	Bitmap helicopter;
+	Bitmap helicopter, crashedHelo;
 	public int w, h, heloHeight, heloWidth, heloDelta, heloStart;
 	public float topWall, bottomWall, wallLength;
 	public ArrayList<Integer> upperLim, lowerLim, wallTop;
@@ -33,6 +34,8 @@ public class TunnelView extends View {
 		super(context);
 		tunnel=(MainActivity)context;
 		tunnel.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		
+		
 		
 		upperLim=new ArrayList<Integer>();
 		lowerLim=new ArrayList<Integer>();
@@ -59,13 +62,14 @@ public class TunnelView extends View {
 		bottomWall=h-wallFraction;
 		topWall=wallFraction+0;
 		paint.setColor(Color.BLUE);
-		if (notCrash) //put these in constructor
+		if (notCrash) 
 		{
+
 			helicopter= Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.helicopter_icon1),heloWidth,heloHeight,false);
 		}
 		else if (!notCrash)
 		{
-			helicopter= Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.helo_crash),heloWidth,heloHeight,false);
+			helicopter=Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.helo_crash),heloWidth,heloHeight,false);
 		}
 		g.drawBitmap(helicopter, 50, tunnel.heloH, paint);
 		tunnel.wall.brickWidth=(float) (w/100.0);

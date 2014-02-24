@@ -1,4 +1,4 @@
-package csc281.project.helicoptergame;
+package com.csc281.helicoptergame;
 
 import java.util.ArrayList;
 import java.util.Random;
